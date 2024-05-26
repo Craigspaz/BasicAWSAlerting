@@ -140,7 +140,7 @@ resource "aws_cloudwatch_event_rule" "root_changes" {
   "source": ["aws.signin"],
   "detail": {
     "userIdentity": {
-      "arn": ["arn:${data.aws_partition.current[count.index].name}:iam::${data.aws_caller_identity.current[count.index].account_id}:root"]
+      "arn": ["arn:${data.aws_partition.current[count.index].partition}:iam::${data.aws_caller_identity.current[count.index].account_id}:root"]
     }
   }
 })
