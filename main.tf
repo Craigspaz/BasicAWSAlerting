@@ -71,7 +71,7 @@ resource "aws_cloudwatch_event_target" "login_event_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.logins[count.index].name
   target_id = "console-sign-ins"
-  arn = aws_sns_topic_subscription.owner[count.index].arn
+  arn = aws_sns_topic.critical_alert[count.index].arn
 }
 
 resource "aws_cloudwatch_event_rule" "ec2_instances" {
@@ -91,7 +91,7 @@ resource "aws_cloudwatch_event_target" "ec2_instances_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.ec2_instances[count.index].name
   target_id = "ec2-instance-changes"
-  arn = aws_sns_topic_subscription.owner[count.index].arn
+  arn = aws_sns_topic.critical_alert[count.index].arn
 }
 
 resource "aws_cloudwatch_event_rule" "s3_changes" {
@@ -112,7 +112,7 @@ resource "aws_cloudwatch_event_target" "s3_changes_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.s3_changes[count.index].name
   target_id = "s3-changes"
-  arn = aws_sns_topic_subscription.owner[count.index].arn
+  arn = aws_sns_topic.critical_alert[count.index].arn
 }
 
 
@@ -129,7 +129,7 @@ resource "aws_cloudwatch_event_target" "route53_changes_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.route53_changes[count.index].name
   target_id = "route53-changes"
-  arn = aws_sns_topic_subscription.owner[count.index].arn
+  arn = aws_sns_topic.critical_alert[count.index].arn
 }
 
 resource "aws_cloudwatch_event_rule" "root_changes" {
@@ -150,7 +150,7 @@ resource "aws_cloudwatch_event_target" "root_changes_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.root_changes[count.index].name
   target_id = "root-signins"
-  arn = aws_sns_topic_subscription.owner[count.index].arn
+  arn = aws_sns_topic.critical_alert[count.index].arn
 }
 
 resource "aws_cloudwatch_event_rule" "lambda_changes" {
@@ -166,7 +166,7 @@ resource "aws_cloudwatch_event_target" "lambda_changes_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.lambda_changes[count.index].name
   target_id = "lambda-changes"
-  arn = aws_sns_topic_subscription.owner[count.index].arn
+  arn = aws_sns_topic.critical_alert[count.index].arn
 }
 
 
@@ -183,7 +183,7 @@ resource "aws_cloudwatch_event_target" "iam_changes_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.iam_changes[count.index].name
   target_id = "iam-changes"
-  arn = aws_sns_topic_subscription.owner[count.index].arn
+  arn = aws_sns_topic.critical_alert[count.index].arn
 }
 
 
