@@ -125,7 +125,7 @@ resource "aws_cloudwatch_event_rule" "route53_changes" {
   })
 }
 
-resource "aws_cloudwatch_event_target" "s3_changes_target" {
+resource "aws_cloudwatch_event_target" "route53_changes_target" {
   count = var.deploy_resources == true ? 1 : 0
   rule = aws_cloudwatch_event_rule.route53_changes[count.index].name
   target_id = "route53-changes"
